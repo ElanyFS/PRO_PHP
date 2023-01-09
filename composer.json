@@ -1,0 +1,20 @@
+{
+    "name": "e625412/pro_php",
+    "autoload": {
+        "psr-4": {
+            "app\\": "app"
+        },
+        "files": [
+            "app/helpers/constants.php",
+            "app/router/router.php",
+            "app/router/routes.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Elany Ferreira de Souza",
+            "email": "elany.ferreira@seati.ma.gov.br"
+        }
+    ],
+    "require": {}
+}
