@@ -31,6 +31,31 @@ function regularExpressionMatchArrayRoutes($uri, $routes)
     );
 }
 
+//Pegar os parametros da uri da rota dinamica 
+function params($uri, $matchedUri)
+{
+    if (!empty($matchedUri)) {
+        $matchedToGetParams = array_keys($matchedUri)[0];
+        return array_diff(
+            $uri,
+            explode('/', ltrim($matchedToGetParams, '/'))
+        );
+    }
+
+    return [];
+}
+
+//Alterar nome dos parametros da uri
+function paramsFormat($uri,$params)
+{
+    $paramsData = [];
+    foreach ($params as $index => $param) {
+        $paramsData[$uri[$index - 1]] = $param;
+    }
+
+    return $paramsData;
+}
+
 function router()
 {
     //Pegar uri exata
@@ -45,11 +70,31 @@ function router()
 
     // echo $matchedUri;
 
+    // $array1 = [
+    //     'user','1','name','Elany'
+    // ];
+
+    // $array2 = [
+    //     'user','[0-9]+','name','[a-zA-Z]+'
+    // ];
+
+    // var_dump(array_diff($array1,$array2));
+    // die();
 
     if (empty($matchedUri)) {
         $matchedUri = regularExpressionMatchArrayRoutes($uri, $routes);
+        $uri = explode('/', ltrim($uri, '/'));
+        $params = params($uri, $matchedUri);
+
+        $params = paramsFormat($uri,$params);
+
+        var_dump($params);
+        die();
+        // var_dump($uri);
+        // die();
+        // var_dump($params);
     }
 
-    var_dump($matchedUri);
-    die();
+    // var_dump($matchedUri);
+    // die();
 }
