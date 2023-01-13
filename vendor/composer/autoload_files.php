@@ -11,4 +11,5 @@ return array(
     'a14e9838e830ff9603ee78620c1671b9' => $baseDir . '/app/router/routes.php',
     'e477b60f38b9cff1dc7fcfe2a4357a1c' => $baseDir . '/app/core/controller.php',
     '172eabd95d947b73e87b919add7d2d22' => $baseDir . '/app/controllers/Home.php',
+    'bbf1ae681a36fd4f4a3d6f6b6aa44401' => $baseDir . '/app/controllers/User.php',
 );

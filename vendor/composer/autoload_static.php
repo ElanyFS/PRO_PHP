@@ -12,6 +12,7 @@ class ComposerStaticInit8610f5416b46249e6fa67941b8efbb2f
         'a14e9838e830ff9603ee78620c1671b9' => __DIR__ . '/../..' . '/app/router/routes.php',
         'e477b60f38b9cff1dc7fcfe2a4357a1c' => __DIR__ . '/../..' . '/app/core/controller.php',
         '172eabd95d947b73e87b919add7d2d22' => __DIR__ . '/../..' . '/app/controllers/Home.php',
+        'bbf1ae681a36fd4f4a3d6f6b6aa44401' => __DIR__ . '/../..' . '/app/controllers/User.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -30,6 +31,8 @@ class ComposerStaticInit8610f5416b46249e6fa67941b8efbb2f
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'app\\controllers\\Home' => __DIR__ . '/../..' . '/app/controllers/Home.php',
+        'app\\controllers\\User' => __DIR__ . '/../..' . '/app/controllers/User.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
