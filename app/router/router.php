@@ -80,6 +80,7 @@ function router()
 
     // var_dump(array_diff($array1,$array2));
     // die();
+    $params = [] ; 
 
     if (empty($matchedUri)) {
         $matchedUri = regularExpressionMatchArrayRoutes($uri, $routes);
@@ -95,6 +96,8 @@ function router()
         // var_dump($params);
     }
 
-    // var_dump($matchedUri);
-    // die();
+    if(!empty($matchedUri)){
+        controller($matchedUri, $params);
+        return;
+    }
 }
