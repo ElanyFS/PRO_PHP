@@ -13,7 +13,6 @@ class ComposerStaticInit8610f5416b46249e6fa67941b8efbb2f
         'e477b60f38b9cff1dc7fcfe2a4357a1c' => __DIR__ . '/../..' . '/app/core/controller.php',
         '172eabd95d947b73e87b919add7d2d22' => __DIR__ . '/../..' . '/app/controllers/Home.php',
         'bbf1ae681a36fd4f4a3d6f6b6aa44401' => __DIR__ . '/../..' . '/app/controllers/User.php',
-        '3382e5f3283e032905539d0f3f193e5e' => __DIR__ . '/../..' . '/app/views/master.php',
     );
 
     public static $prefixLengthsPsr4 = array (

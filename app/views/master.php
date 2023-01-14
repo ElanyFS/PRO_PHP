@@ -7,10 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-   <form action="">
-    <label for="">Nome</label>
-    <label for="">Email</label>
-    <label for="">Senha</label>
+   <h2>Estudando PHP</h2>
+   <h1><?php require VIEWS.$view;?></h1>
    </form>
 </body>
 </html>
