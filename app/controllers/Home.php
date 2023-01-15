@@ -5,9 +5,10 @@ class Home{
     public function index($params){
         // var_dump($params);
         // die();
+        $user = findAll('usuario');
         return[
             'view' => 'home.php',
-            'data' => ['name' => 'Elany']
+            'data' => ['title' => 'Home', 'users' => $user]
         ];
     }
 }

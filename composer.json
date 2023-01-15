@@ -10,7 +10,9 @@
             "app/router/routes.php",
             "app/core/controller.php",
             "app/controllers/Home.php",
-            "app/controllers/User.php"
+            "app/controllers/User.php",
+            "app/database/connect.php",
+            "app/database/fetch.php"
         ]
     },
     "authors": [

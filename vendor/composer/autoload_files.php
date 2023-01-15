@@ -12,4 +12,6 @@ return array(
     'e477b60f38b9cff1dc7fcfe2a4357a1c' => $baseDir . '/app/core/controller.php',
     '172eabd95d947b73e87b919add7d2d22' => $baseDir . '/app/controllers/Home.php',
     'bbf1ae681a36fd4f4a3d6f6b6aa44401' => $baseDir . '/app/controllers/User.php',
+    '7ddb79b62574f5e86e505ebb646b899f' => $baseDir . '/app/database/connect.php',
+    '66fd6e1ecb032cf4203a2e268f68c9f5' => $baseDir . '/app/database/fetch.php',
 );

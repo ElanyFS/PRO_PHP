@@ -2,8 +2,14 @@
 
 namespace app\controllers;
 
-class User{
-    function usuario($params){
-        var_dump('Usuário'. $params);
+class User
+{
+
+    public function show()
+    {
+        return[
+            'view' => 'user.php',
+            'data' => ['title' => 'User']
+        ];
     }
 }
