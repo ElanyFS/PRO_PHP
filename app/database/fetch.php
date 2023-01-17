@@ -1,6 +1,6 @@
 <?php
 
-function findAll($table)
+function All($table)
 {
 
     try {
@@ -14,17 +14,17 @@ function findAll($table)
     }
 }
 
-// function findById($table, $field, $value)
-// {
+function findById($table, $field, $value)
+{
 
-//     try {
-//         $connect = connect();
-//         $prepare = $connect->prepare("select * from {$table} where {$field} = :{$field}");
-//         $prepare->execute([
-//             $field => $value
-//         ]);
-//         return $prepare->fetch();
-//     } catch (PDOException $e) {
-//         var_dump($e->getMessage());
-//     }
-// }
+    try {
+        $connect = connect();
+        $prepare = $connect->prepare("select * from {$table} where {$field} = :{$field}");
+        $prepare->execute([
+            $field => $value
+        ]);
+        return $prepare->fetch();
+    } catch (PDOException $e) {
+        var_dump($e->getMessage());
+    }
+}

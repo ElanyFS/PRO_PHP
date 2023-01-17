@@ -1,14 +1,16 @@
 <?php
 
-require "../public/bootstrap.php";
+require "bootstrap.php";
 
-// echo TESTE;
-// echo "<br> Bem-vindo," . NOME;
 try{
     $data = router();
 
     if(!isset($data['data'])){
         throw new Exception('O índice data não está disponível.');
+    }
+
+    if(!isset($data['data']['title'])){
+        throw new Exception('O índice title não está disponível.');
     }
 
     if(!isset($data['view'])){

@@ -5,14 +5,21 @@
             "app\\": "app"
         },
         "files": [
-            "app/helpers/constants.php",
             "app/router/router.php",
             "app/router/routes.php",
+
+            "app/helpers/constants.php",
+            "app/helpers/redirect.php",
+            
             "app/core/controller.php",
+
             "app/controllers/Home.php",
             "app/controllers/User.php",
+            "app/controllers/Login.php",
+
             "app/database/connect.php",
             "app/database/fetch.php"
+            
         ]
     },
     "authors": [

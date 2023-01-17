@@ -1,14 +1,13 @@
 <?php
-
-// function routes(){
-//     return [
-//         '/' => 'Home@index',
-//         '/user/create' => 'User@create'
-//     ];
-// }
 return [
-    '/' => 'Home@index',
-    '/user/create' => 'User@create',
-    '/users/[0-9]+' => 'User@show',
-    '/user/[0-9]+/name/[a-zA-Z]+' => 'User@showName'
+    'POST' => [
+        '/login' => 'User@login'
+    ],
+
+    'GET' => [
+        '/' => 'Home@index',
+        '/login' => "Login@index",
+        '/user/create' => 'User@create',
+        '/user/[0-9]+' => 'User@userID'
+    ]
 ];

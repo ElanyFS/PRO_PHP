@@ -1,19 +1,12 @@
 <?php
 
-function routes()
-{
-    return require 'routes.php';
-}
-
+//URI Fixa
 //Verifica se a rota informada existe dentro da funcao routes
 function existsRouter($uri, $routes)
 {
-    if (array_key_exists($uri, $routes)) {
-        return [$uri => $routes[$uri]];
-        // return $uri;
-    }
-
-    return [];
+    return array_key_exists($uri, $routes) ? 
+    [$uri => $routes[$uri]] : 
+    [];
 }
 
 //Uri dinamica 
@@ -48,7 +41,10 @@ function params($uri, $matchedUri)
 //Alterar nome dos parametros da uri
 function paramsFormat($uri,$params)
 {
+    //Inica a varial com o array vazio
     $paramsData = [];
+
+    //Percorre a variavel 'params' e atribui valores aos index
     foreach ($params as $index => $param) {
         $paramsData[$uri[$index - 1]] = $param;
     }
@@ -63,10 +59,12 @@ function router()
 
     // echo $uri;
 
-    $routes = routes();
+    $routes = require 'routes.php';
+
+    $requestMethod = $_SERVER['REQUEST_METHOD'];
 
     //Uri
-    $matchedUri = existsRouter($uri, $routes);
+    $matchedUri = existsRouter($uri, $routes[$requestMethod]);
 
     // echo $matchedUri;
 
@@ -83,14 +81,14 @@ function router()
     $params = [] ; 
 
     if (empty($matchedUri)) {
-        $matchedUri = regularExpressionMatchArrayRoutes($uri, $routes);
+        $matchedUri = regularExpressionMatchArrayRoutes($uri, $routes[$requestMethod]);
         $uri = explode('/', ltrim($uri, '/'));
         $params = params($uri, $matchedUri);
 
         $params = paramsFormat($uri,$params);
 
-        var_dump($params);
-        die();
+        // var_dump($params);
+        // die();
         // var_dump($uri);
         // die();
         // var_dump($params);
@@ -99,4 +97,6 @@ function router()
     if(!empty($matchedUri)){
         return controller($matchedUri, $params);
     }
+
+    throw new Exception('Erro...');
 }

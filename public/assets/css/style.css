@@ -1,0 +1,191 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap");
+
+html,
+body {
+  font-family: "PT Sans", "sans-serif";
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.container_login,
+.container_users {
+  margin: auto;
+  width: 50%;
+  border: 3px solid rgb(182, 250, 228);
+  padding: 10px;
+  border-radius: 8px;
+}
+
+ul#menu_list {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  justify-content: space-between;
+}
+
+ul#menu_list li {
+  margin-right: 15px;
+}
+
+#status_login {
+  background-color: #efefef;
+}
+
+/* Formulario de login */
+
+.formulario {
+  max-width: 480px;
+  overflow: hidden;
+  margin: 50px auto;
+  background: #fff;
+  /* box-shadow: 1px 0px 1.2px 0px #e3e3e3;  */
+  border-radius: 3px;
+  padding: 1em;
+}
+.formulario .title {
+  width: 100%;
+  float: left;
+  margin-bottom: 1em;
+  font-size: 1.5em;
+  font-weight: 300;
+  text-align: center;
+  border-bottom: 1px #eceaea solid;
+  padding-bottom: 1em;
+  color: #8db57f;
+}
+.formulario .label {
+  width: 100%;
+  float: left;
+  margin-bottom: 10px;
+}
+.formulario .label span {
+  width: 100%;
+  float: left;
+  color: #393838;
+  margin-bottom: 3px;
+}
+.formulario .campo {
+  color: #393838;
+  font-family: "open_sansregular";
+  font-size: 16px;
+  border-radius: 3px;
+  line-height: 20px;
+  background-color: transparent;
+  border: 2px solid #d2d2d2;
+  transition: all 0.3s;
+  padding: 11px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: 0;
+}
+.formulario .campo:focus {
+  border: 2px solid #b3d9a5;
+  color: #72a65f;
+}
+.formulario textarea {
+  height: 130px;
+  line-height: 130%;
+  resize: vertical;
+}
+.formulario .botao {
+  font-family: "open_sansregular";
+  width: 100%;
+  background: rgb(182, 250, 228);
+  color: #ffffff;
+  border-radius: 5px;
+  border: 0;
+  cursor: pointer;
+  font-size: 22px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  transition: all 0.3s;
+  margin-top: -4px;
+  font-weight: 700;
+}
+.formulario .botao:hover {
+  background: rgb(169, 251, 225);
+}
+
+/* Formulario de cadastro de usuario */
+
+.container_form {
+  width: 435px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  /* box-shadow: 4px 4px 4px 4px #e3e3e3;  */
+  border-radius: 4px;
+  padding: 1em;
+  border: 4px solid rgb(169, 251, 225);
+}
+.container_form h1 {
+  font-family: "open_sansregular";
+  font-size: 2.3em;
+  color: #00dae0;
+  border-bottom: 1px #f0eded solid;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+.form_grupo {
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  position: relative;
+}
+.form_grupo .legenda {
+  width: 100%;
+  float: left;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* SUBMIT */
+.submit {
+  width: 100%;
+  float: left;
+  text-align: center;
+}
+
+.submit_btn:hover {
+  background-color: #69deb7;
+  transform: scale(1.03);
+}
+
+.submit_btn {
+  float: left;
+  display: block;
+  padding: 5px 30px;
+  border: none;
+  outline: none;
+  background-color: rgb(169, 251, 225);
+  color: #fff;
+  text-shadow: 0 0 5px rgb(0, 0, 0);
+  font-family: inherit;
+  font-size: 25px;
+  font-family: "open_sansregular";
+  border-radius: 6px;
+  margin: 20px auto;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+}
+.submit_btn:hover {
+  background-color: #69deb7;
+  transform: scale(1.03);
+}
