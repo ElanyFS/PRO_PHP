@@ -4,6 +4,7 @@
         <div class="form_grupo">
             <label for="nome" class="form_label">Nome</label>
             <input type="text" name="nome" class="form_input" id="nome" placeholder="Nome">
+            <?php echo getFlash('nome') ?>
         </div>
         <!-- <div class="form_grupo">
             <label for="nome" class="form_label">CPF</label>
@@ -28,10 +29,12 @@
         <div class="form_grupo">
             <label for="e-mail" class="form_label">E-mail</label>
             <input type="email" name="email" class="form_input" id="email" placeholder="seuemail@email.com">
+            <?php echo getFlash('email') ?>
         </div>
         <div class="form_grupo">
             <label for="nome" class="form_label">Senha</label>
             <input type="password" name="password" class="form_input" id="password" placeholder="123456">
+            <?php echo getFlash('password') ?>
         </div>
         <!-- <div class="form_grupo">
             <label for="estadocivil" class="text">Estado civil</label>

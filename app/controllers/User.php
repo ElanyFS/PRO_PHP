@@ -32,6 +32,14 @@ class User
     }
 
     public function createStore(){
-        
+        $validate = validate([
+            'nome' => 'required',
+            'email' => 'required|email|unique',
+            'password' => 'required|maxlen'
+        ]);
+
+        if(!$validate){
+            return redirect('/user/create');
+        }
     }
 }

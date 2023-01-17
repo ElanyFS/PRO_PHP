@@ -12,6 +12,7 @@ return array(
     'f59f120c9455c80cb5888cd4fffd245c' => $baseDir . '/app/helpers/redirect.php',
     'b2ba91768d0e9cab147ee1eb629b8f12' => $baseDir . '/app/helpers/flash.php',
     '9e1f092a1f8f05a37c014b62307beb6e' => $baseDir . '/app/helpers/sessions.php',
+    '03bd05d5794cd1b5509ee746a144dbca' => $baseDir . '/app/helpers/validate.php',
     'e477b60f38b9cff1dc7fcfe2a4357a1c' => $baseDir . '/app/core/controller.php',
     '172eabd95d947b73e87b919add7d2d22' => $baseDir . '/app/controllers/Home.php',
     'bbf1ae681a36fd4f4a3d6f6b6aa44401' => $baseDir . '/app/controllers/User.php',
