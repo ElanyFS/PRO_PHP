@@ -1,30 +1,26 @@
 <?php
 
-function All($table)
-{
-
-    try {
+function all($table, $fields = '*'){
+    try{
         $connect = connect();
 
-        $query = $connect->query("select * from {$table}");
-
+        $query = $connect->query("Select {$fields} from {$table}");
         return $query->fetchAll();
-    } catch (PDOException $e) {
+    }catch(PDOException $e){
         var_dump($e->getMessage());
     }
 }
 
-function findById($table, $field, $value)
-{
-
-    try {
+function findBy($table, $fields = '*', $field, $value){
+    try{
         $connect = connect();
-        $prepare = $connect->prepare("select * from {$table} where {$field} = :{$field}");
+
+        $prepare = $connect->prepare("select {$fields} from {$table} where {$field} = :{$field}");
         $prepare->execute([
             $field => $value
         ]);
-        return $prepare->fetch();
-    } catch (PDOException $e) {
+        return $prepare->fetchObject();
+    }catch(PDOException $e){
         var_dump($e->getMessage());
     }
 }

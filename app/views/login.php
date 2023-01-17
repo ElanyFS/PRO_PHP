@@ -42,6 +42,7 @@
     <form class="formulario" method="post" action="/login">
         <h1>Login</h1>
 
+        <?php echo getFlash('message');?>
         <label class="label">
             <span>E-mail</span>
             <input type="email" name="email" class="campo" placeholder="Digite seu e-mail" value="bcarolyna@gmail.com" />

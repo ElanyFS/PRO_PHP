@@ -1,26 +1,33 @@
 <?php
 
 function controller($matchedUri, $params){
-    // var_dump($matchedUri);
-
+    
+    //o metodo explode remove o '@' e atribui os dois valores da variavel para o array
     [$controller, $method] = explode('@', array_values($matchedUri)[0]);
+    $controllerWithNamespace = CONTROLLER_PATH . $controller;
 
-    $controllerNameSpace = CONTROLLER_PATH.$controller;
+    if (!class_exists($controllerWithNamespace)) {
+        throw new Exception("Controller {$controller} não existe");
+        // var_dump('exite');
+        // die();
+    }
+
+    $controllerInstance = new $controllerWithNamespace;
+
+    if(!method_exists($controllerWithNamespace, $method)){
+        throw new Exception("O metódo {$method} não existe no controller {$controller}");
+    }
+
+    $controller = $controllerInstance->$method($params);
+
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+        die();
+    }
+
+    return $controller;
 
     // var_dump($controller);
-    // var_dump($method);
-
-    if(!class_exists($controllerNameSpace)){
-        // var_dump('Não existe');
-        // die();
-        throw new Exception("O controller {$controller} não existe.");
-    }
-
-    $controllerInstance = new $controllerNameSpace;
-
-    if(!method_exists($controllerInstance, $method)){
-        throw new Exception("O método {$method} não existe no controller {$controller}.");
-    }
-
-    return $controllerInstance->$method($params);
+    // die();
+    // var_dump($matchedUri);
+    // die();
 }

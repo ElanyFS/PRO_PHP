@@ -11,6 +11,8 @@ class ComposerStaticInit8610f5416b46249e6fa67941b8efbb2f
         'a14e9838e830ff9603ee78620c1671b9' => __DIR__ . '/../..' . '/app/router/routes.php',
         'ee81c80c1e5909316ff038d9d7f9b239' => __DIR__ . '/../..' . '/app/helpers/constants.php',
         'f59f120c9455c80cb5888cd4fffd245c' => __DIR__ . '/../..' . '/app/helpers/redirect.php',
+        'b2ba91768d0e9cab147ee1eb629b8f12' => __DIR__ . '/../..' . '/app/helpers/flash.php',
+        '9e1f092a1f8f05a37c014b62307beb6e' => __DIR__ . '/../..' . '/app/helpers/sessions.php',
         'e477b60f38b9cff1dc7fcfe2a4357a1c' => __DIR__ . '/../..' . '/app/core/controller.php',
         '172eabd95d947b73e87b919add7d2d22' => __DIR__ . '/../..' . '/app/controllers/Home.php',
         'bbf1ae681a36fd4f4a3d6f6b6aa44401' => __DIR__ . '/../..' . '/app/controllers/User.php',
@@ -36,6 +38,7 @@ class ComposerStaticInit8610f5416b46249e6fa67941b8efbb2f
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'app\\controllers\\Home' => __DIR__ . '/../..' . '/app/controllers/Home.php',
+        'app\\controllers\\Login' => __DIR__ . '/../..' . '/app/controllers/Login.php',
         'app\\controllers\\User' => __DIR__ . '/../..' . '/app/controllers/User.php',
     );
 

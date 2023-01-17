@@ -2,35 +2,36 @@
 
 namespace app\controllers;
 
-class User{
-    public function userId($params){
+class User
+{
+    public function userId($params)
+    {
         // var_dump($params);
         // die();
-        if(!isset($params['user'])){
-            redirect('/');
+        if (!isset($params['user'])) {
+            return redirect('/');
         }
 
-        $user = findById('usuarios', 'idusuarios', $params['user']);
-        // var_dump($user);
+        $user = findBy('usuarios', '*', 'idusuario', $params['user']);
 
-        return [
-            'view' => 'userId.php',
-            'data' => ['title' => $params['user'], 'user' => $user]
-        ];
+        var_dump($user);
+        die();
+
+        // return [
+        //     'view' => 'userId.php',
+        //     'data' => ['title' => $params['user'], 'user' => $user]
+        // ];
     }
 
-    public function create(){
+    public function createIndex()
+    {
         return [
             'view' => 'create.php',
             'data' => ['title' => 'CreateUser']
         ];
     }
 
-    /*Logar usuário */
-
-    public function login(){
-        return [
-            
-        ];
+    public function createStore(){
+        
     }
 }

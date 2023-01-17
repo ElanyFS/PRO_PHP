@@ -1,4 +1,4 @@
-<h2>Usuário <?php echo $user->idusuarios; ?></h2>
+<h2>Usuário <?php echo $user->idusuario; ?></h2>
 
 <table border="1">
    <tr>

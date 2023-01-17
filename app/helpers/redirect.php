@@ -1,5 +1,11 @@
 <?php
 
 function redirect($to){
-    return ("Location: ". $to);
+    header('Location: ' . $to);
+}
+
+function setMessageError($index, $message, $redirectTo)
+{
+    setFlash($index, $message);
+    return redirect($redirectTo);
 }
