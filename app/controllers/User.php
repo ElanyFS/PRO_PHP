@@ -42,6 +42,8 @@ class User
             return redirect('/user/create');
         }
 
-        create('usuarios',$validate);
+        $create = create('usuarios',$validate);
+
+        var_dump($create);
     }
 }

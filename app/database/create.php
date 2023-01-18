@@ -5,9 +5,11 @@ function create($table, $value)
         $connect = connect();
 
         $sql = "insert into {$table} (";
-        $sql. = "";
-        var_dump($sql);
-        die();
+        $sql .=  implode(",", array_keys($value)) . ") values (";
+        $sql .= ':' . implode(':', array_keys($value)) . ")";
+
+        $prepare = $connect->prepare($sql);
+        return $prepare->execute();
     } catch (PDOException $e) {
         var_dump($e->getMessage());
     }
