@@ -3,17 +3,26 @@
 function validate(array $validations)
 {
     $result = [];
+    $param = '';
     foreach ($validations as $field => $validate) {
         // var_dump($validate);
         // $result = [];
         if (!str_contains($validate, '|')) {
+            if (str_contains($validate, ':')) {
+                // var_dump($validate);
+                [$validate, $param] = explode(':', $validate);
+            }
 
             // $validate($field) e required($field) é a msm coisa
-            $result[$field] = $validate($field);
+            $result[$field] = $validate($field, $param);
         } else {
             $explodePipeValidate = explode('|', $validate);
             foreach ($explodePipeValidate as $validate) {
-                $result[$field] = $validate($field);
+                if (str_contains($validate, ':')) {
+                    // var_dump($validate);
+                    [$validate, $param] = explode(':', $validate);
+                }
+                $result[$field] = $validate($field, $param);
             }
         }
     }
@@ -23,7 +32,6 @@ function validate(array $validations)
     }
 
     return $result;
-
 }
 
 function required($field)
@@ -50,12 +58,27 @@ function email($field)
     return filter_input(INPUT_POST, $field, FILTER_SANITIZE_STRING);
 }
 
-function unique($field)
+function unique($field, $param)
 {
-    
+    $value = filter_input(INPUT_POST, $field, FILTER_SANITIZE_STRING);
+    $user = findBy($param,'*', $field, $value);
+
+    if($user){
+        setFlash($field, 'E-mail já cadastrado.');
+        return false;
+    }
+
+    return $value;
 }
 
-function maxlen($field)
+function maxlen($field, $param)
 {
-    
+    $value = filter_input(INPUT_POST, $field, FILTER_SANITIZE_STRING);
+
+    if(strlen($value) > $param){
+        setFlash($field, "Senha deve ser menor que {$param} caracteres.");
+        return false;
+    }
+
+    return $value;
 }
