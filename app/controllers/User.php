@@ -41,5 +41,7 @@ class User
         if(!$validate){
             return redirect('/user/create');
         }
+
+        create('usuarios',$validate);
     }
 }
