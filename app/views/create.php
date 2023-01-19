@@ -1,3 +1,4 @@
+<?php $this->layout('master', ['title' => $title]) ?>
 <div class="container_form">
     <h2>Formulário de Cadastro</h2>
     <form class="form" action="/user/create" method="post">

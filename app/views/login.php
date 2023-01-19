@@ -37,6 +37,7 @@
 </body>
 
 </html> -->
+<?php $this->layout('master', ['title' => $title]) ?>
 
 <div class="container_login">
     <form class="formulario" method="post" action="/login">

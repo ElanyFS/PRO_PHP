@@ -10,7 +10,7 @@ class Login
         // die();
 
         return [
-            'view' => 'login.php',
+            'view' => 'login',
             'data' => ['title' => 'Login']
         ];
     }

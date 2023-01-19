@@ -1,3 +1,5 @@
+<?php $this->layout('master', ['title' => $title]) ?>
+
 <h2>Usuário <?php echo $user->idusuario; ?></h2>
 
 <table border="1">

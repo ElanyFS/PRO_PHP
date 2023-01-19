@@ -26,7 +26,7 @@ class User
     public function createIndex()
     {
         return [
-            'view' => 'create.php',
+            'view' => 'create',
             'data' => ['title' => 'CreateUser']
         ];
     }

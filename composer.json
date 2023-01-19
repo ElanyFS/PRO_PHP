@@ -32,5 +32,7 @@
             "email": "elany.ferreira@seati.ma.gov.br"
         }
     ],
-    "require": {}
+    "require": {
+        "league/plates": "^3.5"
+    }
 }
