@@ -1,11 +1,12 @@
 <?php $this->layout('master', ['title' => $title]) ?>
 <div class="container_form">
     <h2>Formulário de Cadastro</h2>
+    <?php echo getFlash('message'); ?>
     <form class="form" action="/user/create" method="post">
         <div class="form_grupo">
             <label for="nome" class="form_label">Nome</label>
-            <input type="text" name="nome_user" class="form_input" id="nome" placeholder="Nome" value="Priscila">
-            <?php echo getFlash('nome') ?>
+            <input type="text" name="nome_user" class="form_input" id="nome" placeholder="Nome" >
+            <?php echo getFlash('nome_user') ?>
         </div>
         <!-- <div class="form_grupo">
             <label for="nome" class="form_label">CPF</label>
@@ -29,12 +30,12 @@
         </div> -->
         <div class="form_grupo">
             <label for="e-mail" class="form_label">E-mail</label>
-            <input type="email" name="email" class="form_input" id="email" placeholder="seuemail@email.com" value="pricaliari@gmail.com">
+            <input type="email" name="email" class="form_input" id="email" placeholder="seuemail@email.com">
             <?php echo getFlash('email') ?>
         </div>
         <div class="form_grupo">
             <label for="nome" class="form_label">Senha</label>
-            <input type="password" name="password" class="form_input" id="password" placeholder="123456" value="1234">
+            <input type="password" name="password" class="form_input" id="password" placeholder="123456">
             <?php echo getFlash('password') ?>
         </div>
         <!-- <div class="form_grupo">

@@ -120,6 +120,14 @@ ul#menu_list li {
   background: rgb(169, 251, 225);
 }
 
+/* Usuário logado */
+
+.user_logged{
+  color: red;
+  left: 45%;
+  position: absolute;
+}
+
 /* Formulario de cadastro de usuario */
 
 .container_form {

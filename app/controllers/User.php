@@ -33,16 +33,25 @@ class User
 
     public function createStore(){
         $validate = validate([
-            'nome' => 'required',
-            'email' => 'email|unique:usuarios',
-            'password' => 'required|maxlen:8'
+            'nome_user' => 'required',
+            'email' => 'email|required|unique:usuarios',
+            'password' => 'maxlen:8|required'
         ]);
 
         if(!$validate){
             return redirect('/user/create');
         }
 
+        $validate['password'] = password_hash($validate['password'], PASSWORD_DEFAULT);
+
         $create = create('usuarios',$validate);
+
+        if(!$create){
+           setFlash('message', 'Erro ao cadastrar usuário.');
+           return false; 
+        }
+
+        return redirect('/');
 
         var_dump($create);
     }

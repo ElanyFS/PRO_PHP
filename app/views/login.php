@@ -41,22 +41,23 @@
 
 <div class="container_login">
     <form class="formulario" method="post" action="/login">
-        <h1>Login</h1>
+        <?php if (!logged()) : ?>
+            <h1>Login</h1>
 
-        <?php echo getFlash('message');?>
-        <label class="label">
-            <span>E-mail</span>
-            <input type="email" name="email" class="campo" placeholder="Digite seu e-mail" value="bcarolyna@gmail.com" />
-            <i class="icon icon-envelope"></i>
-        </label>
+            <?php echo getFlash('message'); ?>
+            <label class="label">
+                <span>E-mail</span>
+                <input type="email" name="email" class="campo" placeholder="Digite seu e-mail" value="bcarolyna@gmail.com" />
+                <i class="icon icon-envelope"></i>
+            </label>
 
-        <label class="label">
-            <span>Password</span>
-            <input type="password" name="password" class="campo" placeholder="Digite sua senha" />
-            <i class="icon icon-envelope"></i>
-        </label>
+            <label class="label">
+                <span>Password</span>
+                <input type="password" name="password" class="campo" placeholder="Digite sua senha" />
+                <i class="icon icon-envelope"></i>
+            </label>
 
-        <!-- <label class="label">
+            <!-- <label class="label">
             <span>Assunto</span>
             <input type="text" name="assunto" class="campo" placeholder="Digite um assunto" required=""/>   
         </label>
@@ -70,11 +71,15 @@
             <textarea name="mensagem" class="campo" placeholder="Deixe sua mensagem" required=""></textarea>
         </label> -->
 
-        <label class="label">
+            <label class="label">
 
-            <input type="hidden" name="acao" value="enviar">
-            <button type="submit" class="botao"> Login </button>
+                <input type="hidden" name="acao" value="enviar">
+                <button type="submit" class="botao"> Login </button>
 
-        </label>
+            </label>
+
+        <?php else : ?>
+            <span class="user_logged">Usuário logado</span>
+        <?php endif; ?>
     </form>
 </div>
