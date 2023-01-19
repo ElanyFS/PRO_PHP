@@ -2,6 +2,10 @@
 function create($table, $value)
 {
     try {
+        if(!arrayAssociative($value)){
+            throw new Exception("Erro ao cadastrar.");
+        }
+
         $connect = connect();
 
         $sql = "insert into {$table} (";

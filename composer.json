@@ -14,6 +14,7 @@
             "app/helpers/sessions.php",
             "app/helpers/validate.php",
             "app/helpers/validations.php",
+            "app/helpers/helpers.php",
             
             "app/core/controller.php",
 
@@ -23,7 +24,8 @@
 
             "app/database/connect.php",
             "app/database/fetch.php",
-            "app/database/create.php"
+            "app/database/create.php",
+            "app/database/update.php"
             
         ]
     },

@@ -14,6 +14,7 @@ return array(
     '9e1f092a1f8f05a37c014b62307beb6e' => $baseDir . '/app/helpers/sessions.php',
     '03bd05d5794cd1b5509ee746a144dbca' => $baseDir . '/app/helpers/validate.php',
     '6106df70f428dc53ba8ab2ce76cfa93a' => $baseDir . '/app/helpers/validations.php',
+    '61b80045285cb3daa79832f14ecd8114' => $baseDir . '/app/helpers/helpers.php',
     'e477b60f38b9cff1dc7fcfe2a4357a1c' => $baseDir . '/app/core/controller.php',
     '172eabd95d947b73e87b919add7d2d22' => $baseDir . '/app/controllers/Home.php',
     'bbf1ae681a36fd4f4a3d6f6b6aa44401' => $baseDir . '/app/controllers/User.php',
@@ -21,4 +22,5 @@ return array(
     '7ddb79b62574f5e86e505ebb646b899f' => $baseDir . '/app/database/connect.php',
     '66fd6e1ecb032cf4203a2e268f68c9f5' => $baseDir . '/app/database/fetch.php',
     'a20b4e7f4dc4bb4d3a156f0b3d32cb32' => $baseDir . '/app/database/create.php',
+    '3c2828950f552e20a1e82d721640fb6f' => $baseDir . '/app/database/update.php',
 );

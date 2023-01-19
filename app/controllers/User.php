@@ -45,6 +45,7 @@ class User
         $validate['password'] = password_hash($validate['password'], PASSWORD_DEFAULT);
 
         $create = create('usuarios',$validate);
+        // $create = create('usuarios',['teste1', 'teste2']);
 
         if(!$create){
            setFlash('message', 'Erro ao cadastrar usuário.');
