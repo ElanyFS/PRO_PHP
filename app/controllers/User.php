@@ -34,8 +34,8 @@ class User
     public function createStore(){
         $validate = validate([
             'nome_user' => 'required',
-            'email' => 'email|unique:usuarios',
-            'password' => 'required|maxlen:8'
+            'email' => 'email|required|unique:usuarios',
+            'password' => 'maxlen:8|required'
         ]);
 
         if(!$validate){

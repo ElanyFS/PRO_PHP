@@ -5,6 +5,7 @@ function validate(array $validations)
     $result = [];
     $param = '';
     foreach ($validations as $field => $validate) {
+        //Validacao simples
         // var_dump($validate);
         // $result = [];
         if (!str_contains($validate, '|')) {
@@ -16,14 +17,9 @@ function validate(array $validations)
             // $validate($field) e required($field) é a msm coisa
             $result[$field] = $validate($field, $param);
         } else {
-            $explodePipeValidate = explode('|', $validate);
-            foreach ($explodePipeValidate as $validate) {
-                if (str_contains($validate, ':')) {
-                    // var_dump($validate);
-                    [$validate, $param] = explode(':', $validate);
-                }
-                $result[$field] = $validate($field, $param);
-            }
+            //validacao multipla
+            
+            $result[$field] = multipleValidate($validate, $field, $param);
         }
     }
 
@@ -34,51 +30,23 @@ function validate(array $validations)
     return $result;
 }
 
-function required($field)
+function multipleValidate($validate, $field, $param)
 {
-    // var_dump("Required {$field}");
+    $result = [];
+    $explodePipeValidate = explode('|', $validate);
+    foreach ($explodePipeValidate as $validate) {
+        if (str_contains($validate, ':')) {
+            // var_dump($validate);
+            [$validate, $param] = explode(':', $validate);
+        }
 
-    if ($_POST[$field] == '') {
-        setFlash($field, 'O campo é obrigatório');
-        return false;
+        $result[$field] = $validate($field, $param);
+
+        if(isset($result[$field]) and $result[$field] === false){
+            break;
+        }
     }
-
-    return filter_input(INPUT_POST, $field, FILTER_SANITIZE_STRING);
+    return $result[$field];
 }
 
-function email($field)
-{
-    $emailIsValid = filter_input(INPUT_POST, $field, FILTER_VALIDATE_EMAIL);
 
-    if (!$emailIsValid) {
-        setFlash($field, 'E-mail inválido.');
-        return false;
-    }
-
-    return filter_input(INPUT_POST, $field, FILTER_SANITIZE_STRING);
-}
-
-function unique($field, $param)
-{
-    $value = filter_input(INPUT_POST, $field, FILTER_SANITIZE_STRING);
-    $user = findBy($param,'*', $field, $value);
-
-    if($user){
-        setFlash($field, 'E-mail já cadastrado.');
-        return false;
-    }
-
-    return $value;
-}
-
-function maxlen($field, $param)
-{
-    $value = filter_input(INPUT_POST, $field, FILTER_SANITIZE_STRING);
-
-    if(strlen($value) > $param){
-        setFlash($field, "Senha deve ser menor que {$param} caracteres.");
-        return false;
-    }
-
-    return $value;
-}

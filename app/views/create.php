@@ -5,7 +5,7 @@
         <div class="form_grupo">
             <label for="nome" class="form_label">Nome</label>
             <input type="text" name="nome_user" class="form_input" id="nome" placeholder="Nome" >
-            <?php echo getFlash('nome') ?>
+            <?php echo getFlash('nome_user') ?>
         </div>
         <!-- <div class="form_grupo">
             <label for="nome" class="form_label">CPF</label>
