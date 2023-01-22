@@ -7,6 +7,7 @@ return [
 
     "GET" => [
         '/' => 'Home@index',
+        '/users' => 'Users@index',
         '/login' => "Login@index",
         '/logout' => 'Login@destroy',
         '/user/create' => 'User@createIndex',

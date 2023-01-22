@@ -21,11 +21,13 @@
             "app/controllers/Home.php",
             "app/controllers/User.php",
             "app/controllers/Login.php",
+            "app/controllers/Users.php",
 
             "app/database/connect.php",
             "app/database/fetch.php",
             "app/database/create.php",
-            "app/database/update.php"
+            "app/database/update.php",
+            "app/database/delete.php"
             
         ]
     },
