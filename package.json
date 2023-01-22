@@ -18,17 +18,18 @@
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.11.1",
     "@babel/preset-env": "^7.11.0",
+    "@expo/webpack-config": "^0.17.4",
     "babel-loader": "^8.1.0",
     "eslint": "^7.7.0",
     "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12",
-    "@babel/polyfill": "~7.12.1" 
+    "webpack-cli": "^3.3.12"
   },
   "bugs": {
     "url": "https://github.com/ElanyFS/PRO_PHP/issues"
   },
   "homepage": "https://github.com/ElanyFS/PRO_PHP#readme",
   "dependencies": {
+    "alpinejs": "^3.11.1",
     "axios": "^1.2.3"
   }
 }

@@ -9,6 +9,7 @@ module.exports = {
      output: {
           path: path.resolve(__dirname, 'public'),
           filename: '[name].js',
+          filename: 'my-first-webpack.bundle.js',
      },
      module: {
           rules: [
@@ -20,3 +21,4 @@ module.exports = {
           ],
      },
 };
+
