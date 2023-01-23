@@ -1,5 +1,6 @@
 const path = require('path');
 
+
 module.exports = {
      mode: process.env.NODE_ENV == 'development' ? 'development' : 'production',
      devtool: process.env.NODE_ENV == 'development' ? 'source-map' : '',
@@ -17,6 +18,17 @@ module.exports = {
                     exclude: /node_modules/,
                     loader: 'babel-loader',
                },
+               // {
+               //      test: /(@?react-(navigation|native)).*\.(ts|js)x?$/,
+               //      include: /node_modules/,
+               //      exclude: [/react-native-web/, /\.(native|ios|android)\.(ts|js)x?$/],
+               //      loader: 'babel-loader'
+               // },
+               // // This would match ui-kitten
+               // {
+               //      test: /@?(ui-kitten|eva-design).*\.(ts|js)x?$/,
+               //      loader: 'babel-loader'
+               // }
           ],
      },
 };

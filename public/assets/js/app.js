@@ -1,4 +1,9 @@
-// alert('Teste');
-import users from './users';
+// // alert('Teste');
+// import users from './users';
 
-users();
+// users();
+import Alpine from 'alpinejs'
+ 
+// window.Alpine = Alpine
+ 
+// Alpine.start()
