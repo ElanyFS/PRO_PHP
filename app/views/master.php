@@ -17,8 +17,8 @@
     <div>
         <?= $this->section('content') ?>
     </div>
-    <script src="app.js"></script>
-    <?= $this->section('scripts') ?>
+    <!-- <script src="app.js"></script> -->
+    <?= $this->section('script') ?>
 </body>
 
 </html>

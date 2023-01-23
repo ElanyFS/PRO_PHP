@@ -48,5 +48,3 @@ function multipleValidate($validate, $field, $param)
     }
     return $result[$field];
 }
-
-
