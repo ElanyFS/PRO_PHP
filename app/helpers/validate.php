@@ -1,6 +1,6 @@
 <?php
 
-function validate(array $validations)
+function validate(array $validations, $persistInput = false)
 {
     $result = [];
     $param = '';
@@ -21,6 +21,10 @@ function validate(array $validations)
             
             $result[$field] = multipleValidate($validate, $field, $param);
         }
+    }
+     
+    if($persistInput){
+        setOld();
     }
 
     if (in_array(false, $result)) {

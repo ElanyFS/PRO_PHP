@@ -16,6 +16,7 @@ class ComposerStaticInit8610f5416b46249e6fa67941b8efbb2f
         '03bd05d5794cd1b5509ee746a144dbca' => __DIR__ . '/../..' . '/app/helpers/validate.php',
         '6106df70f428dc53ba8ab2ce76cfa93a' => __DIR__ . '/../..' . '/app/helpers/validations.php',
         '61b80045285cb3daa79832f14ecd8114' => __DIR__ . '/../..' . '/app/helpers/helpers.php',
+        '63cfff43dd6d10c8552c6f2ea40b3fda' => __DIR__ . '/../..' . '/app/helpers/old.php',
         'e477b60f38b9cff1dc7fcfe2a4357a1c' => __DIR__ . '/../..' . '/app/core/controller.php',
         '172eabd95d947b73e87b919add7d2d22' => __DIR__ . '/../..' . '/app/controllers/Home.php',
         'bbf1ae681a36fd4f4a3d6f6b6aa44401' => __DIR__ . '/../..' . '/app/controllers/User.php',

@@ -15,6 +15,7 @@
             "app/helpers/validate.php",
             "app/helpers/validations.php",
             "app/helpers/helpers.php",
+            "app/helpers/old.php",
             
             "app/core/controller.php",
 

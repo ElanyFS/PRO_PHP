@@ -5,7 +5,7 @@
     <form class="form" action="/user/create" method="post">
         <div class="form_grupo">
             <label for="nome" class="form_label">Nome</label>
-            <input type="text" name="nome_user" class="form_input" id="nome" placeholder="Nome" >
+            <input type="text" name="nome_user" class="form_input" id="nome" placeholder="Nome" value="<?php echo getOld('nome_user');?>">
             <?php echo getFlash('nome_user') ?>
         </div>
         <!-- <div class="form_grupo">
@@ -30,12 +30,12 @@
         </div> -->
         <div class="form_grupo">
             <label for="e-mail" class="form_label">E-mail</label>
-            <input type="email" name="email" class="form_input" id="email" placeholder="seuemail@email.com">
+            <input type="email" name="email" class="form_input" id="email" placeholder="seuemail@email.com" value="<?php echo getOld('email');?>">
             <?php echo getFlash('email') ?>
         </div>
         <div class="form_grupo">
             <label for="nome" class="form_label">Senha</label>
-            <input type="password" name="password" class="form_input" id="password" placeholder="123456">
+            <input type="password" name="password" class="form_input" id="password" placeholder="123456" value="<?php echo getOld('password');?>">
             <?php echo getFlash('password') ?>
         </div>
         <!-- <div class="form_grupo">
