@@ -10,10 +10,15 @@ class Home{
         // delete("usuarios", ['idusuarios' => "3"]);
         // die();
 
-        $user = All('usuarios');
+        // $user = All('usuarios');
+
+        read('usuarios');
+        where('idusuario', '=', 1);
+        $users = execute();
+        
         return[
             'view' => 'home',
-            'data' => ['title' => 'Home', 'users' => $user]
+            'data' => ['title' => 'Home', 'users' => $users]
         ];
     }
 }
