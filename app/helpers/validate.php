@@ -1,7 +1,12 @@
 <?php
 
-function validate(array $validations, $persistInput = false)
+function validate(array $validations, $persistInput = false, $checkCsrf = false)
 {
+
+    if($checkCsrf){
+        checkCsrf();
+    }
+
     $result = [];
     $param = '';
     foreach ($validations as $field => $validate) {

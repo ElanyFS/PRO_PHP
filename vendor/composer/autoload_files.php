@@ -16,6 +16,7 @@ return array(
     '6106df70f428dc53ba8ab2ce76cfa93a' => $baseDir . '/app/helpers/validations.php',
     '61b80045285cb3daa79832f14ecd8114' => $baseDir . '/app/helpers/helpers.php',
     '63cfff43dd6d10c8552c6f2ea40b3fda' => $baseDir . '/app/helpers/old.php',
+    '98f8fad90428a9c9349db5e6d01e3432' => $baseDir . '/app/helpers/csrf.php',
     'e477b60f38b9cff1dc7fcfe2a4357a1c' => $baseDir . '/app/core/controller.php',
     '172eabd95d947b73e87b919add7d2d22' => $baseDir . '/app/controllers/Home.php',
     'bbf1ae681a36fd4f4a3d6f6b6aa44401' => $baseDir . '/app/controllers/User.php',

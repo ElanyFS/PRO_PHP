@@ -1,8 +1,13 @@
 <?php $this->layout('master', ['title' => $title]) ?>
 <div class="container_form">
     <h2>Formulário de Cadastro</h2>
+
+    
+
     <?php echo getFlash('message'); ?>
+
     <form class="form" action="/user/create" method="post">
+    <?php echo getcsrf(); ?>
         <div class="form_grupo">
             <label for="nome" class="form_label">Nome</label>
             <input type="text" name="nome_user" class="form_input" id="nome" placeholder="Nome" value="<?php echo getOld('nome_user');?>">
