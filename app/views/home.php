@@ -2,13 +2,13 @@
 
 <h2>Usuários</h2>
 
-<!-- <div x-data="users()" x-init="loadUsers()">
+<div x-data="users()" x-init="loadUsers()">
     <ul>
         <template x-for="user in data">
-            <li x-text="usuarios.nome_user"></li>
+            <li x-text="user.nome_user"></li>
         </template>
     </ul>
-</div> -->
+</div>
 
 <ul>
     <?php foreach ($users as $user) : ?>

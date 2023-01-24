@@ -18,17 +18,17 @@
     "url": "https://github.com/ElanyFS/PRO_PHP/issues"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.5",
-    "@babel/core": "^7.11.1",
-    "@babel/preset-env": "^7.11.0",
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
     "@expo/webpack-config": "^0.17.4",
-    "babel-loader": "^8.1.0",
-    "eslint": "^7.7.0",
+    "babel-loader": "^9.1.2",
+    "eslint": "^8.32.0",
     "webpack": "^5.75.0",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^5.0.1"
   },
   "dependencies": {
     "alpinejs": "^3.11.1",
-    "axios": "^1.2.3"
+    "axios": "^1.2.4"
   }
 }
