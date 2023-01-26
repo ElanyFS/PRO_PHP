@@ -11,6 +11,46 @@ function read($table, $fields = '*')
     $query['sql'] = "Select {$fields} from {$table}";
 }
 
+
+function limit($limit){
+    global $query;
+
+    if(isset($query['page'])){
+        throw new Exception('O limit não pode ser chamado com o pagination.');
+    }
+
+    $query['limit'] = true;
+    $query['sql'] = "{$query['sql']} limit {$limit}";
+}
+
+function order($by, $order = 'asc'){
+    global $query;
+
+    if(isset($query['limit'])){
+        throw new Exception('Necessário chamar o order antes do limit.');
+    }
+
+    if(isset($query['page'])){
+        throw new Exception('O order não pode ser chamado depois do pagination.');
+    }
+
+    $query['order'] = true;
+
+    $query['sql'] = "{$query['sql']} order by {$by} {$order}";
+}
+
+function pagination($perPage){
+    global $query;
+
+    if(isset($query['limit'])){
+        throw new Exception('O pagination não pode ser chamado com o limit');
+    }
+
+    $query['page'] = true;
+
+    $query['sql'] = "{$query['sql']} limit {$perPage} offset 0";
+}
+
 function where($field, $operator, $value)
 {
     global $query;
@@ -50,7 +90,7 @@ function orAndWhere($field, $operator, $value, $typeWhere = 'or')
 
     $query['execute'] = array_merge($query['execute'],[$field => $value]);
 
-    $query['sql'] = "{$query['sql']} where {$typeWhere} {$field} {$operator} :{$field}";
+    $query['sql'] = "{$query['sql']} {$typeWhere} {$field} {$operator} :{$field}";
 }
 
 function execute()
@@ -59,11 +99,11 @@ function execute()
 
     $connect = connect();
 
+    var_dump($query['sql']);
+    die();
+
     $prepare = $connect->prepare($query['sql']);
     $prepare->execute($query['execute'] ?? []);
-
-    // var_dump($query);
-    // var_dump($prepare);
 
     return $prepare->fetchAll();
 }
