@@ -14,6 +14,7 @@ class User
 
         read('usuarios');
         where('idusuario','=',$params['user']);
+        // orAndWhere('nome_user', '=', $params['user'], 'or');
         $user = execute();
 
         // var_dump($user);

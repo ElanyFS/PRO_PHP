@@ -13,10 +13,12 @@ class Home{
         // $user = All('usuarios');
 
         read('usuarios');
-        // where('idusuario', '=', $params);
+        // where('idusuario', '=', 50); 
+        // orAndWhere('nome_user', '=', 'Priscila', 'and');
+        execute();
+
         $users = execute();
 
-        // var_dump($users);
         
         return[
             'view' => 'home',

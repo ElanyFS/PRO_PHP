@@ -30,6 +30,29 @@ function where($field, $operator, $value)
     $query['sql'] = "{$query['sql']} where {$field} {$operator} :{$field}";
 }
 
+function orAndWhere($field, $operator, $value, $typeWhere = 'or')
+{
+    global $query;
+
+    if(!isset($query['read'])){
+        throw new Exception('Necessário chamar o read antes do where.');
+    }
+
+    if(!isset($query['where'])){
+        throw new Exception('Necessário chamar o where antes do orAndWhere.');
+    }
+
+    if(func_num_args() < 3){
+        throw new Exception('Where precisa de exatamente 3 ou 4 parâmetros.  ');
+    }
+
+    $query['orAndWhere'] = true;
+
+    $query['execute'] = array_merge($query['execute'],[$field => $value]);
+
+    $query['sql'] = "{$query['sql']} where {$typeWhere} {$field} {$operator} :{$field}";
+}
+
 function execute()
 {
     global $query;
@@ -39,7 +62,7 @@ function execute()
     $prepare = $connect->prepare($query['sql']);
     $prepare->execute($query['execute'] ?? []);
 
-    // var_dump($query['sql']);
+    // var_dump($query);
     // var_dump($prepare);
 
     return $prepare->fetchAll();
