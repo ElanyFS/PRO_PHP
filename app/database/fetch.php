@@ -12,10 +12,11 @@ function read($table, $fields = '*')
 }
 
 
-function limit($limit){
+function limit($limit)
+{
     global $query;
 
-    if(isset($query['page'])){
+    if (isset($query['page'])) {
         throw new Exception('O limit não pode ser chamado com o pagination.');
     }
 
@@ -23,14 +24,15 @@ function limit($limit){
     $query['sql'] = "{$query['sql']} limit {$limit}";
 }
 
-function order($by, $order = 'asc'){
+function order($by, $order = 'asc')
+{
     global $query;
 
-    if(isset($query['limit'])){
+    if (isset($query['limit'])) {
         throw new Exception('Necessário chamar o order antes do limit.');
     }
 
-    if(isset($query['page'])){
+    if (isset($query['page'])) {
         throw new Exception('O order não pode ser chamado depois do pagination.');
     }
 
@@ -39,10 +41,11 @@ function order($by, $order = 'asc'){
     $query['sql'] = "{$query['sql']} order by {$by} {$order}";
 }
 
-function pagination($perPage){
+function pagination($perPage)
+{
     global $query;
 
-    if(isset($query['limit'])){
+    if (isset($query['limit'])) {
         throw new Exception('O pagination não pode ser chamado com o limit');
     }
 
@@ -77,21 +80,21 @@ function where()
     $args = func_get_args();
     $numArgs = func_num_args();
 
-    if(!isset($query['read'])){
+    if (!isset($query['read'])) {
         throw new Exception('Necessário chamar o read antes do where.');
     }
 
-    if(func_num_args() !== 3){
+    if (func_num_args() !== 3) {
         throw new Exception('Where precisa de exatamente 3 parâmetros.  ');
     }
 
-    if($numArgs == 2){
+    if ($numArgs == 2) {
         $field = $args[0];
         $operator = '=';
         $value = $args[1];
     }
 
-    if($numArgs == 3){
+    if ($numArgs == 3) {
         $field = $args[0];
         $operator = $args[1];
         $value = $args[2];
@@ -99,7 +102,7 @@ function where()
 
     $query['where'] = true;
 
-    $query['execute'] = array_merge($query['execute'],[$field => $value]);
+    $query['execute'] = array_merge($query['execute'], [$field => $value]);
 
     $query['sql'] = "{$query['sql']} where {$field} {$operator} :{$field}";
 }
@@ -130,49 +133,66 @@ function where()
 function orAndWhere($field, $operator, $value, $typeWhere = 'or')
 {
     global $query;
-    
+
     $args = func_get_args();
     $numArgs = func_num_args();
 
-    if(!isset($query['read'])){
+    if (!isset($query['read'])) {
         throw new Exception('Necessário chamar o read antes do where.');
     }
 
-    if(!isset($query['where'])){
+    if (!isset($query['where'])) {
         throw new Exception('Necessário chamar o where antes do orAndWhere.');
     }
 
-    if(func_num_args() < 3){
+    if (func_num_args() < 3) {
         throw new Exception('Where precisa de exatamente 3 ou 4 parâmetros.  ');
     }
 
-    if($numArgs == 2){
-        $field = $args[0];
-        $operator = '=';
-        $value = $args[1];
-        $typeWhere = 'or';
-    }
+    $data = match($numArgs){
+        2 => whereTwoParameters($args),
+        3 => whereThreeParameters($args),
+        4 => whereFourParameters($args),
+    };
 
-    if($numArgs == 3){
-        $field = $args[0];
-        $operators = ['=','<','>','!=='];
-        $operator = in_array($args[1], $operators) ? $args[1] : '=';
-        $value = in_array($args[1], $operators) ? $args[2] : $args[1];
-        $typeWhere = $args[2] === 'and' ? 'and' : 'or';
-    }
-
-    if($numArgs == 4){
-        $field = $args[0];
-        $operator = $args[1];
-        $value = $args[2];
-        $typeWhere = $args[3];
-    }
+    [$field, $operator, $value, $typeWhere] = $data;
 
     $query['orAndWhere'] = true;
 
-    $query['execute'] = array_merge($query['execute'],[$field => $value]);
+    $query['execute'] = array_merge($query['execute'], [$field => $value]);
 
     $query['sql'] = "{$query['sql']} {$typeWhere} {$field} {$operator} :{$field}";
+}
+
+function whereTwoParameters(array $args)
+{
+    $field = $args[0];
+    $operator = '=';
+    $value = $args[1];
+    $typeWhere = 'or';
+
+    return [$field, $operator, $value, $typeWhere];
+}
+
+function whereThreeParameters(array $args)
+{
+    $field = $args[0];
+    $operators = ['=', '<', '>', '!=='];
+    $operator = in_array($args[1], $operators) ? $args[1] : '=';
+    $value = in_array($args[1], $operators) ? $args[2] : $args[1];
+    $typeWhere = $args[2] === 'and' ? 'and' : 'or';
+
+    return [$field, $operator, $value, $typeWhere];
+}
+
+function whereFourParameters(array $args)
+{
+    $field = $args[0];
+    $operator = $args[1];
+    $value = $args[2];
+    $typeWhere = $args[3];
+
+    return [$field, $operator, $value, $typeWhere];
 }
 
 function execute()
