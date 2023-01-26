@@ -13,8 +13,10 @@ class Home{
         // $user = All('usuarios');
 
         read('usuarios');
-        where('idusuario', '=', 1);
+        // where('idusuario', '=', $params);
         $users = execute();
+
+        // var_dump($users);
         
         return[
             'view' => 'home',

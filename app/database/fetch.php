@@ -6,6 +6,7 @@ function read($table, $fields = '*')
 {
     global $query;
     $query['read'] = true;
+    $query['execute'] = [];
 
     $query['sql'] = "Select {$fields} from {$table}";
 }
@@ -24,7 +25,7 @@ function where($field, $operator, $value)
 
     $query['where'] = true;
 
-    $query['execute'] = [$field => $value];
+    $query['execute'] = array_merge($query['execute'],[$field => $value]);
 
     $query['sql'] = "{$query['sql']} where {$field} {$operator} :{$field}";
 }
@@ -36,12 +37,12 @@ function execute()
     $connect = connect();
 
     $prepare = $connect->prepare($query['sql']);
-    $prepare->execute($query['execute']);
+    $prepare->execute($query['execute'] ?? []);
 
     // var_dump($query['sql']);
     // var_dump($prepare);
 
-    // return $prepare->fetchObject();
+    return $prepare->fetchAll();
 }
 
 // function all($table, $fields = '*')
