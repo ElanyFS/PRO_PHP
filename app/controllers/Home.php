@@ -13,13 +13,13 @@ class Home{
         // $user = All('usuarios');
 
         read('usuarios');
-        // where('idusuario', '>', 0); 
-        order('idusuario');
+        where('idusuario', '>', 0); 
+        // order('idusuario');
         
         // limit('5');
-        pagination(10);
+        // pagination(10);
         
-        // orAndWhere('nome_user', '=', 'Priscila', 'and');
+        orAndWhere('nome_user', '=', 'Priscila', 'and');
         execute();
 
         // $users = execute();
