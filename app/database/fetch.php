@@ -149,7 +149,7 @@ function orAndWhere($field, $operator, $value, $typeWhere = 'or')
         throw new Exception('Where precisa de exatamente 3 ou 4 parâmetros.  ');
     }
 
-    $data = match($numArgs){
+    $data = match ($numArgs) {
         2 => whereTwoParameters($args),
         3 => whereThreeParameters($args),
         4 => whereFourParameters($args),
@@ -195,19 +195,37 @@ function whereFourParameters(array $args)
     return [$field, $operator, $value, $typeWhere];
 }
 
-function execute()
+function execute($isFetchAll = true, $rowCount = false)
 {
     global $query;
 
-    $connect = connect();
+    try {
+        $connect = connect();
 
-    // var_dump($query['sql']);
-    // die();
+        // var_dump($query['sql']);
+        // die();
 
-    $prepare = $connect->prepare($query['sql']);
-    $prepare->execute($query['execute'] ?? []);
+        if(!$query['sql']){
+            throw new Exception('Query não existente.');
+        }
 
-    return $prepare->fetchAll();
+        $prepare = $connect->prepare($query['sql']);
+        $prepare->execute($query['execute'] ?? []);
+
+        if($rowCount){
+            return $prepare->rowCount();
+        }
+
+        if($isFetchAll){
+            return $prepare->fetchAll();
+        }
+
+        return $prepare->fetch();
+    } catch (Exception $e) {
+        $message = "Erro no arquivo {$e->getFile()} na linha {$e->getLine()} com a mensagem: {$e->getMessage()}";
+        $message .= $query['sql'];
+        ddd($message);
+    }
 }
 
 function all($table, $fields = '*')

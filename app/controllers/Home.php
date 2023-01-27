@@ -12,7 +12,7 @@ class Home{
 
         // $user = All('usuarios');
 
-        read('usuarios');
+        read('usuarios', 'oooo');
         // where('idusuario', '>', 0); 
         // order('idusuario');
         
@@ -20,7 +20,7 @@ class Home{
         // pagination(10);
         
         // orAndWhere('nome_user', '=', 'Priscila', 'and');
-        execute();
+        // execute();
 
         $users = execute();
 
