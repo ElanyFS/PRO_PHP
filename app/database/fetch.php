@@ -201,8 +201,8 @@ function execute()
 
     $connect = connect();
 
-    var_dump($query['sql']);
-    die();
+    // var_dump($query['sql']);
+    // die();
 
     $prepare = $connect->prepare($query['sql']);
     $prepare->execute($query['execute'] ?? []);

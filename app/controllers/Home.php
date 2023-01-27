@@ -13,21 +13,21 @@ class Home{
         // $user = All('usuarios');
 
         read('usuarios');
-        where('idusuario', '>', 0); 
+        // where('idusuario', '>', 0); 
         // order('idusuario');
         
         // limit('5');
         // pagination(10);
         
-        orAndWhere('nome_user', '=', 'Priscila', 'and');
+        // orAndWhere('nome_user', '=', 'Priscila', 'and');
         execute();
 
-        // $users = execute();
+        $users = execute();
 
         
-        // return[
-        //     'view' => 'home',
-        //     'data' => ['title' => 'Home', 'users' => $users]
-        // ];
+        return[
+            'view' => 'home',
+            'data' => ['title' => 'Home', 'users' => $users]
+        ];
     }
 }
