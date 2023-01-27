@@ -223,8 +223,9 @@ function execute($isFetchAll = true, $rowCount = false)
         return $prepare->fetch();
     } catch (Exception $e) {
         $message = "Erro no arquivo {$e->getFile()} na linha {$e->getLine()} com a mensagem: {$e->getMessage()}";
-        $message .= $query['sql'];
+        $message .= '<br>'. $query['sql'];
         ddd($message);
+        // var_dump($message);
     }
 }
 

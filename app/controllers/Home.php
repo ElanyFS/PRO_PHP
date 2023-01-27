@@ -12,7 +12,7 @@ class Home{
 
         // $user = All('usuarios');
 
-        read('usuarios', 'oooo');
+        read('usuarios');
         // where('idusuario', '>', 0); 
         // order('idusuario');
         
@@ -24,7 +24,6 @@ class Home{
 
         $users = execute();
 
-        
         return[
             'view' => 'home',
             'data' => ['title' => 'Home', 'users' => $users]
