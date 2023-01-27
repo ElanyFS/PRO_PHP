@@ -94,6 +94,13 @@ function router()
         // var_dump($params);
     }
 
+    if($_ENV['MAINTENANCE'] === 'true'){
+        // var_dump('Em manutenção');
+        // die();
+        $matchedUri = ['/maintenance' => 'Maintenance@index'];
+        
+    }
+
     if(!empty($matchedUri)){
         return controller($matchedUri, $params);
     }
