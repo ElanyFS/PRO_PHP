@@ -11,6 +11,8 @@ class Home
 
         read('usuarios');
 
+        // whereIn('nome_user', ['Allan Jeon', 'Malu']);
+
         if($search){
             search(['nome_user' => $search, 'email' => $search]);
         }

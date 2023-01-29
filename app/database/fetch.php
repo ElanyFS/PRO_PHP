@@ -198,6 +198,18 @@ function whereThreeParameters(array $args)
 //     return [$field, $operator, $value, $typeWhere];
 // }
 
+function whereIn($field, array $args){
+    global $query;
+
+    if(isset($query['where'])){
+        throw new Exception('Where não pode ser chamado com o Where In');
+    }
+
+    $query['where'] = true;
+
+    $query['sql'] = "{$query['sql']} where {$field} in (" . '\' '.implode( '\' , \'' , $args). '\'' .")";
+}
+
 function search(array $search){
     global $query;
 
@@ -230,6 +242,9 @@ function search(array $search){
 function execute($isFetchAll = true, $rowCount = false)
 {
     global $query;
+
+    // var_dump($query['sql']);
+    // die();
 
     try {
         $connect = connect();
