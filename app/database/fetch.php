@@ -5,6 +5,9 @@ $query = [];
 function read($table, $fields = '*')
 {
     global $query;
+
+    $query = [];
+
     $query['read'] = true;
     $query['execute'] = [];
 
@@ -152,7 +155,7 @@ function orAndWhere($field, $operator, $value, $typeWhere = 'or')
     $data = match ($numArgs) {
         2 => whereTwoParameters($args),
         3 => whereThreeParameters($args),
-        4 => whereFourParameters($args),
+        4 =>$args,
     };
 
     [$field, $operator, $value, $typeWhere] = $data;
@@ -185,15 +188,15 @@ function whereThreeParameters(array $args)
     return [$field, $operator, $value, $typeWhere];
 }
 
-function whereFourParameters(array $args)
-{
-    $field = $args[0];
-    $operator = $args[1];
-    $value = $args[2];
-    $typeWhere = $args[3];
+// function whereFourParameters(array $args)
+// {
+//     $field = $args[0];
+//     $operator = $args[1];
+//     $value = $args[2];
+//     $typeWhere = $args[3];
 
-    return [$field, $operator, $value, $typeWhere];
-}
+//     return [$field, $operator, $value, $typeWhere];
+// }
 
 function search(array $search){
     global $query;
@@ -251,9 +254,18 @@ function execute($isFetchAll = true, $rowCount = false)
 
         return $prepare->fetch();
     } catch (Exception $e) {
-        $message = "Erro no arquivo {$e->getFile()} na linha {$e->getLine()} com a mensagem: {$e->getMessage()}";
-        $message .= '<br>'. $query['sql'];
-        ddd($message);
+        // $message = "Erro no arquivo {$e->getFile()} na linha {$e->getLine()} com a mensagem: {$e->getMessage()}";
+        // $message .= '<br>'. $query['sql'];
+        
+        $error = [
+            'file' => $e->getFile(),
+            'line' => $e->getLine(),
+            'message' => $e->getMessage(),
+            'sql' => $query['sql']
+        ];
+
+        ddd($error);
+
         // var_dump($message);
     }
 }

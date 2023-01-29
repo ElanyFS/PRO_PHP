@@ -15,7 +15,7 @@
         <?php $this->insert('partials/header') ?>
     </div>
 
-    <div>
+    <div class="content">
         <?= $this->section('content') ?>
     </div>
     <script src="app.js"></script>

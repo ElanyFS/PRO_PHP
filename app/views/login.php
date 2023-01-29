@@ -47,7 +47,7 @@
             <?php echo getFlash('message'); ?>
             <label class="label">
                 <span>E-mail</span>
-                <input type="email" name="email" class="campo" placeholder="Digite seu e-mail" value="bcarolyna@gmail.com" />
+                <input type="email" name="email" class="campo" placeholder="Digite seu e-mail" />
                 <i class="icon icon-envelope"></i>
             </label>
 
