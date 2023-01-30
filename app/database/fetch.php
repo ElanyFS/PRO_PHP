@@ -1,5 +1,7 @@
 <?php
 
+use Doctrine\Inflector\InflectorFactory;
+
 $query = [];
 
 function read($table, $fields = '*')
@@ -7,6 +9,8 @@ function read($table, $fields = '*')
     global $query;
 
     $query = [];
+
+    $query['table'] = $table;
 
     $query['read'] = true;
     $query['execute'] = [];
@@ -54,7 +58,59 @@ function pagination($perPage)
 
     $query['page'] = true;
 
-    $query['sql'] = "{$query['sql']} limit {$perPage} offset 0";
+    $rowCount = execute(rowCount: true);
+
+    //Pagina atual 
+    $page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_STRING);
+    $page = $page ?? 1;
+    $query['currentPage'] = (int)$page;
+
+    //Total de paginas
+    $query['pageCount'] = (int)ceil($rowCount / $perPage);
+
+    $offset = ($page - 1) * $perPage;
+
+    // var_dump($rowCount, $page, $offset, $query['pageCount']);
+    // die();
+
+    $query['sql'] = "{$query['sql']} limit {$perPage} offset {$offset}";
+
+    // var_dump($query['sql']);
+}
+
+function render()
+{
+    global $query;
+
+    $pageCount = (int)$query['pageCount'];
+    $pagecurrent = (int)$query['currentPage'];
+
+    $links = '<ul class="pagination">';
+    $back = $pagecurrent - 1;
+    $next = $pagecurrent + 1;
+    $maxLinks = 5;
+
+    // $links .= "<li class='page-item'><a class='page-link material-symbols-outlined' href='?page={$back}'>keyboard_double_arrow_left</a></li>";
+
+    $linkPageA = http_build_query(array_merge($_GET, ['page' => $back]));
+    $links .= "<li class='page-item'> <a class='page-link' href='?{$linkPageA}' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a> </li>";
+
+    for ($i = $pagecurrent - $maxLinks; $i <= $pagecurrent + $maxLinks; $i++) {
+        if ($i > 0  && $i <= $pageCount) {
+            $page = "?page={$i}";
+            $linkPage = http_build_query(array_merge($_GET, ['page' => $i]));
+            $links .= "<li class='page-item'><a class='page-link' href='?{$linkPage}'>{$i}</a></li>";
+        }
+    }
+
+    $linkPageB = http_build_query(array_merge($_GET, ['page' => $next]));
+    $links .= "<li class='page-item'> <a class='page-link' href='?{$linkPageB}' aria-label='Previous'><span aria-hidden='true'>&raquo;</span></a> </li>";
+
+    // $links .= "<li class='page-item'><a class='page-link material-symbols-outlined' href='?page={$next}'>keyboard_double_arrow_right</a></li>";
+
+    $links .= '</ul>';
+
+    return $links;
 }
 
 // function where($field, $operator, $value)
@@ -155,7 +211,7 @@ function orAndWhere($field, $operator, $value, $typeWhere = 'or')
     $data = match ($numArgs) {
         2 => whereTwoParameters($args),
         3 => whereThreeParameters($args),
-        4 =>$args,
+        4 => $args,
     };
 
     [$field, $operator, $value, $typeWhere] = $data;
@@ -198,19 +254,56 @@ function whereThreeParameters(array $args)
 //     return [$field, $operator, $value, $typeWhere];
 // }
 
-function whereIn($field, array $args){
+function whereIn($field, array $args)
+{
     global $query;
 
-    if(isset($query['where'])){
+    if (isset($query['where'])) {
         throw new Exception('Where não pode ser chamado com o Where In');
     }
 
     $query['where'] = true;
 
-    $query['sql'] = "{$query['sql']} where {$field} in (" . '\' '.implode( '\' , \'' , $args). '\'' .")";
+    $query['sql'] = "{$query['sql']} where {$field} in (" . '\' ' . implode('\' , \'', $args) . '\'' . ")";
 }
 
-function search(array $search){
+function fieldFK($table, $field)
+{
+
+    $inflector = InflectorFactory::create()->build();
+    $tableToSingular = $inflector->singularize($table);
+
+    return $tableToSingular . ucfirst($field);
+}
+
+function tableJoin($table, $fieldFK, $typeJoin = 'inner')
+{
+    global $query;
+
+    if (isset($query['where'])) {
+        throw new Exception('Where não pode ser chamado antes do Join.');
+    }
+
+    $fkToJoin = fieldFK($query['table'], $fieldFK);
+
+    $query['sql'] = "{$query['sql']} {$typeJoin} join {$table} on {$table}.{$fkToJoin} = {$query['table']}.{$fieldFK}";
+}
+
+function tableJoinReverse($table, $fieldFK, $typeJoin = 'inner')
+{
+    global $query;
+
+    if (isset($query['where'])) {
+        throw new Exception('Where não pode ser chamado antes do Join.');
+    }
+
+    $fkToJoin = fieldFK($table, $fieldFK);
+
+    $query['sql'] = "{$query['sql']} {$typeJoin} join {$table} on {$table}.{$fieldFK} = {$query['table']}.{$fkToJoin}";
+}
+
+function search(array $search)
+{
     global $query;
 
     if (isset($query['where'])) {
@@ -221,22 +314,21 @@ function search(array $search){
         throw new Exception('Necessário ser um array associativo.');
     }
 
-    $sql= "{$query['sql']} where ";
+    $sql = "{$query['sql']} where ";
 
     $execute = [];
 
-    foreach($search as $field => $searched){
+    foreach ($search as $field => $searched) {
         $sql .= "{$field} like :{$field} or ";
         $execute[$field] = "%{$searched}%";
     }
 
-    $sql = rtrim($sql,' or ');
+    $sql = rtrim($sql, ' or ');
 
     // var_dump($sql);
 
     $query['sql'] = $sql;
     $query['execute'] = $execute;
-
 }
 
 function execute($isFetchAll = true, $rowCount = false)
@@ -252,18 +344,18 @@ function execute($isFetchAll = true, $rowCount = false)
         // var_dump($query['sql']);
         // die();
 
-        if(!$query['sql']){
+        if (!$query['sql']) {
             throw new Exception('Query não existente.');
         }
 
         $prepare = $connect->prepare($query['sql']);
         $prepare->execute($query['execute'] ?? []);
 
-        if($rowCount){
+        if ($rowCount) {
             return $prepare->rowCount();
         }
 
-        if($isFetchAll){
+        if ($isFetchAll) {
             return $prepare->fetchAll();
         }
 
@@ -271,7 +363,7 @@ function execute($isFetchAll = true, $rowCount = false)
     } catch (Exception $e) {
         // $message = "Erro no arquivo {$e->getFile()} na linha {$e->getLine()} com a mensagem: {$e->getMessage()}";
         // $message .= '<br>'. $query['sql'];
-        
+
         $error = [
             'file' => $e->getFile(),
             'line' => $e->getLine(),

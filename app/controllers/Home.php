@@ -13,6 +13,9 @@ class Home
 
         // whereIn('nome_user', ['Allan Jeon', 'Malu']);
 
+        // tableJoinReverse('municipios', 'id');
+
+
         if($search){
             search(['nome_user' => $search, 'email' => $search]);
         }
@@ -28,10 +31,10 @@ class Home
         // read('usuarios');
 
         // where('idusuario', '>', 0); 
-        // order('idusuario');
+        order('nome_user');
 
         // limit('5');
-        // pagination(10);
+        pagination(5);
 
         // orAndWhere('nome_user', '=', 'Priscila', 'and');
         // execute();
@@ -43,7 +46,7 @@ class Home
 
         return [
             'view' => 'home',
-            'data' => ['title' => 'Home', 'users' => $users]
+            'data' => ['title' => 'Home', 'users' => $users, 'links' => render()]
         ];
     }
 }
