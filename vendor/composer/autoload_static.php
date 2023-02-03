@@ -26,6 +26,7 @@ class ComposerStaticInit8610f5416b46249e6fa67941b8efbb2f
         'bbf1ae681a36fd4f4a3d6f6b6aa44401' => __DIR__ . '/../..' . '/app/controllers/User.php',
         '4755dd8cd9e8c3a699082605c44a3926' => __DIR__ . '/../..' . '/app/controllers/Login.php',
         'e87b868b79976f172e2fe08dc6a32285' => __DIR__ . '/../..' . '/app/controllers/Users.php',
+        '848c3f1e6a847338cac290ca154fe250' => __DIR__ . '/../..' . '/app/controllers/Contact.php',
         '7ddb79b62574f5e86e505ebb646b899f' => __DIR__ . '/../..' . '/app/database/connect.php',
         '66fd6e1ecb032cf4203a2e268f68c9f5' => __DIR__ . '/../..' . '/app/database/fetch.php',
     );
@@ -44,6 +45,7 @@ class ComposerStaticInit8610f5416b46249e6fa67941b8efbb2f
         'P' => 
         array (
             'PhpOption\\' => 10,
+            'PHPMailer\\PHPMailer\\' => 20,
         ),
         'L' => 
         array (
@@ -80,6 +82,10 @@ class ComposerStaticInit8610f5416b46249e6fa67941b8efbb2f
         'PhpOption\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
         'League\\Plates\\' => 
         array (
@@ -205,6 +211,12 @@ class ComposerStaticInit8610f5416b46249e6fa67941b8efbb2f
         'League\\Plates\\Template\\ResolveTemplatePath\\ThemeResolveTemplatePath' => __DIR__ . '/..' . '/league/plates/src/Template/ResolveTemplatePath/ThemeResolveTemplatePath.php',
         'League\\Plates\\Template\\Template' => __DIR__ . '/..' . '/league/plates/src/Template/Template.php',
         'League\\Plates\\Template\\Theme' => __DIR__ . '/..' . '/league/plates/src/Template/Theme.php',
+        'PHPMailer\\PHPMailer\\Exception' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/Exception.php',
+        'PHPMailer\\PHPMailer\\OAuth' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/OAuth.php',
+        'PHPMailer\\PHPMailer\\OAuthTokenProvider' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/OAuthTokenProvider.php',
+        'PHPMailer\\PHPMailer\\PHPMailer' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/PHPMailer.php',
+        'PHPMailer\\PHPMailer\\POP3' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/POP3.php',
+        'PHPMailer\\PHPMailer\\SMTP' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/SMTP.php',
         'PhpOption\\LazyOption' => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption/LazyOption.php',
         'PhpOption\\None' => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption/None.php',
         'PhpOption\\Option' => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption/Option.php',
@@ -217,6 +229,7 @@ class ComposerStaticInit8610f5416b46249e6fa67941b8efbb2f
         'Symfony\\Polyfill\\Php80\\PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/PhpToken.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
+        'app\\controllers\\Contact' => __DIR__ . '/../..' . '/app/controllers/Contact.php',
         'app\\controllers\\Home' => __DIR__ . '/../..' . '/app/controllers/Home.php',
         'app\\controllers\\Login' => __DIR__ . '/../..' . '/app/controllers/Login.php',
         'app\\controllers\\Maintenance' => __DIR__ . '/../..' . '/app/controllers/Maintenance.php',

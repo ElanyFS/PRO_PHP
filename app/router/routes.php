@@ -2,12 +2,14 @@
 return [
     "POST" => [
         '/login' => 'Login@store',
+        '/contact' => 'Contact@store',
         '/user/create' => 'User@createStore'
     ],
 
     "GET" => [
         '/' => 'Home@index',
         '/users' => 'Users@index',
+        '/contact' =>'Contact@index',
         '/login' => "Login@index",
         '/logout' => 'Login@destroy',
         '/user/create' => 'User@createIndex',
