@@ -26,10 +26,8 @@
             "app/controllers/Users.php",
 
             "app/database/connect.php",
-            "app/database/fetch.php",
-            "app/database/create.php",
-            "app/database/update.php",
-            "app/database/delete.php"
+            "app/database/fetch.php"
+
             
         ]
     },

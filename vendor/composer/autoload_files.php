@@ -27,7 +27,4 @@ return array(
     'e87b868b79976f172e2fe08dc6a32285' => $baseDir . '/app/controllers/Users.php',
     '7ddb79b62574f5e86e505ebb646b899f' => $baseDir . '/app/database/connect.php',
     '66fd6e1ecb032cf4203a2e268f68c9f5' => $baseDir . '/app/database/fetch.php',
-    'a20b4e7f4dc4bb4d3a156f0b3d32cb32' => $baseDir . '/app/database/create.php',
-    '3c2828950f552e20a1e82d721640fb6f' => $baseDir . '/app/database/update.php',
-    'adf29a2e3d5052798a4c58d0c549640e' => $baseDir . '/app/database/delete.php',
 );

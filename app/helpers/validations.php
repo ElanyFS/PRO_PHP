@@ -47,4 +47,14 @@ function maxlen($field, $param)
 
     return $value;
 }
+
+function optional($field){
+    $value = filter_input(INPUT_POST, $field, FILTER_SANITIZE_STRING);
+
+    if (strlen($value) === '') {
+        return null;
+    }
+
+    return $value;
+}
 ?>
