@@ -22,7 +22,7 @@ class User
 
         return [
             'view' => 'userId',
-            'data' => ['title' => $params['user'], 'user' => $user]
+            'data' => ['title' => $params['user'], 'user' => $user->rows]
         ];
     }
 

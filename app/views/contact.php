@@ -2,7 +2,7 @@
 
 <h2>Contato</h2>
 
-<form action=""> 
+<form action="/contact" method="post"> 
     <input type="text" name="name" placeholder="Seu nome" value="<?php echo getOld('name');?>"><br>
     <?php echo getFlash('name'); ?>
 

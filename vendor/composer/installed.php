@@ -3,7 +3,7 @@
         'name' => 'e625412/pro_php',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '2bbc02f8802ab3f12aa7ffad794d89f78de32cfb',
+        'reference' => '6dd0c767251bdd8afa71af8605a9277cb963a2a9',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'e625412/pro_php' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '2bbc02f8802ab3f12aa7ffad794d89f78de32cfb',
+            'reference' => '6dd0c767251bdd8afa71af8605a9277cb963a2a9',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

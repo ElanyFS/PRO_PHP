@@ -17,6 +17,7 @@
             "app/helpers/helpers.php",
             "app/helpers/old.php",
             "app/helpers/csrf.php",
+            "app/helpers/email.php",
             
             "app/core/controller.php",
 
