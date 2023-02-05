@@ -26,7 +26,11 @@ function send(stdClass|array $emailData)
         if(is_array($emailData)){
             $emailData = (object)$emailData;
         }
-        
+
+        // template($emailData);
+
+        $body = isset(($emailData->template)) ? template($emailData) : $emailData->message;
+
         checkPropertiesEmail($emailData);
 
         $mail = config();
@@ -37,8 +41,9 @@ function send(stdClass|array $emailData)
 
         //Content
         $mail->isHTML(true);
+        $mail->CharSet ='UTF-8';
         $mail->Subject = $emailData->subject;
-        $mail->Body    = $emailData->message;
+        $mail->Body    = $body;
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
         return $mail->send();
@@ -59,4 +64,21 @@ function checkPropertiesEmail($emailData)
             throw new Exception("{$prod} é obrigátorio para enviar o email");
         }
     }
+}
+
+function template($emailData){
+    $template = file_get_contents(ROOT. "/app/views/email/{$emailData->template}.html");
+
+    $var = [];
+    $emailVars = get_object_vars($emailData);
+
+    foreach($emailVars as $key => $value){
+        $var["@{$key}"] = $value;
+    }
+
+    $str = "Olá, @toName, seu email é @toEmail";
+
+    // var_dump($var);
+
+    return (str_replace(array_keys($var), array_values($var), $template));
 }

@@ -24,12 +24,13 @@ class Contact{
         // $email->message = 'Mensagem simples para teste.';
 
         $sent = send([
-        'fromName' => 'Elany',
+        'fromName' => 'Elany1',
         'fromEmail' => 'ellanysouza09@gmail.com',
-        'toName' => 'Carol',
-        'toEmail' => 'bcarolyna@gmail.com',
+        'toName' => 'Elany',
+        'toEmail' => 'ellanysouza08@gmail.com',
         'subject' => 'teste de mensagem',
-        'message' => 'Mensagem simples com array para teste .'
+        'message' => 'Mensagem simples com array para teste .',
+        'template' => 'contact'
         ]);
 
         // $sent = send($email);
