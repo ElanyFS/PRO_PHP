@@ -1,0 +1,1 @@
+<h4><?php echo $user[0]->idusuario;?></h4>

@@ -10,7 +10,8 @@
     Bem-Vindo(a),
     <?php if (logged()) : ?>
 
-        <?php echo user()->nome_user; ?> | <a href="/logout"><span class="material-symbols-outlined">logout</span></a>
+        <?php echo user()->nome_user; ?> | <a href="/logout"><span class="material-symbols-outlined">Logout</span></a>
+        | <a href="/edit"><span class="material-symbols-outlined">Edit</span></a>
 
     <?php else : ?>
         Visitante

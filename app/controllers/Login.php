@@ -15,7 +15,7 @@ class Login
         ];
     }
 
-    public function store()
+    public function store($params)
     {
 
         // var_dump('Logado');
@@ -67,8 +67,9 @@ class Login
         // echo 'Senha correta';
 
         $_SESSION[LOGGED] = $user;
+        $_SESSION[LOG] = $user->idusuario;
 
-        return redirect('/');
+        return redirect("/user/userlog");
     }
 
     public function destroy()

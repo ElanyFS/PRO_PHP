@@ -61,7 +61,7 @@ function checkPropertiesEmail($emailData)
     $emailVars = get_object_vars($emailData);
 
     foreach ($propertiesRequired as $prod) {
-        if (!in_array($prod, array_keys($emailVars))) {
+        if (!array_key_exists($prod, $emailVars)) {
             throw new Exception("{$prod} é obrigátorio para enviar o email");
         }
     }

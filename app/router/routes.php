@@ -9,6 +9,7 @@ return [
     "GET" => [
         '/' => 'Home@index',
         '/users' => 'Users@index',
+        '/user/userlog' => 'User@dadosUsuario',
         '/contact' =>'Contact@index',
         '/login' => "Login@index",
         '/logout' => 'Login@destroy',

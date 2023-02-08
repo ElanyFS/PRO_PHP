@@ -13,7 +13,7 @@ class User
         }
 
         read('usuarios');
-        where('idusuario','=',$params['user']);
+        where('idusuario', '=', $params['user']);
         // orAndWhere('nome_user', '=', $params['user'], 'or');
         $user = execute();
 
@@ -59,5 +59,29 @@ class User
         return redirect('/');
 
         var_dump($create);
+    }
+
+    public function dadosUsuario()
+    {
+
+        if (!isset($params['user'])) {
+            // return redirect('/');
+            var_dump('Usuario');
+            die();
+        }
+
+        // read('usuarios');
+        // where('idusuario','=',$params['user']);
+        // // orAndWhere('nome_user', '=', $params['user'], 'or');
+        // $user = execute();
+
+        // // var_dump($user);
+        // // die();
+
+        // return [
+        //     'view' => 'User',
+        //     'data' => ['title' => $params['user'], 'user' => $user->rows]
+        // ];
+
     }
 }

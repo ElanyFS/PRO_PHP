@@ -1,7 +1,7 @@
 <?php
 
 require "bootstrap.php";
-
+// phpinfo();
 try {
     $data = router();
 
