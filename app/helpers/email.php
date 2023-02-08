@@ -29,7 +29,7 @@ function send(stdClass|array $emailData)
 
         // template($emailData);
 
-        $body = isset(($emailData->template)) ? template($emailData) : $emailData->message;
+        $body = (isset($emailData->template)) ? template($emailData) : $emailData->message;
 
         checkPropertiesEmail($emailData);
 
@@ -48,13 +48,14 @@ function send(stdClass|array $emailData)
 
         return $mail->send();
     } catch (Exception $e) {
-        echo $e->getMessage();
+        var_dump($e->getMessage());
+        die();
     }
 }
 
 function checkPropertiesEmail($emailData)
 {
-    $propertiesRequired = [];
+    $propertiesRequired = ['toName', 'toEmail','fromName', 'fromEmail','subject', 'message'];
     unset($emailData->template);
 
     $emailVars = get_object_vars($emailData);
@@ -67,7 +68,14 @@ function checkPropertiesEmail($emailData)
 }
 
 function template($emailData){
-    $template = file_get_contents(ROOT. "/app/views/email/{$emailData->template}.html");
+
+    $templateFile = ROOT. "/app/views/email/{$emailData->template}.html";
+
+    if(!file_exists($templateFile)){
+        throw new Exception("Template {$emailData->template} indisponivel.");
+    }
+
+    $template = file_get_contents($templateFile);
 
     $var = [];
     $emailVars = get_object_vars($emailData);

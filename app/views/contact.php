@@ -1,19 +1,34 @@
-<?php $this->layout('master', ['title' => $title])?>
+<?php $this->layout('master', ['title' => $title]) ?>
 
-<h2>Contato</h2>
+<div class="container_form">
+    <h2>Contato</h2>
 
-<form action="/contact" method="post"> 
-    <input type="text" name="name" placeholder="Seu nome" value="<?php echo getOld('name');?>"><br>
-    <?php echo getFlash('name'); ?>
+    <?php echo getFlash('contact_success','background-color:green;color:white'); ?>
+    <?php echo getFlash('contact_error','background-color:red;color:white'); ?>
 
-    <input type="text" name="email" placeholder="Seu email" value="<?php echo getOld('email');?>"><br>
-    <?php echo getFlash('email'); ?>
+    <form action="/contact" method="post">
+        <?php echo getcsrf(); ?>
+        <div class="form_grupo">
+            <input type="text" name="name" placeholder="Seu nome" value="<?php echo getOld('name'); ?>"><br>
+            <?php echo getFlash('name'); ?>
+        </div>
 
-    <input type="text" name="subject" placeholder="Assunto" value="<?php echo getOld('subject');?>"><br>
-    <?php echo getFlash('subject'); ?>
+        <div class="form_grupo">
+            <input type="text" name="email" placeholder="Seu email" value="<?php echo getOld('email'); ?>"><br>
+            <?php echo getFlash('email'); ?>
+        </div>
 
-    <textarea name="message" placeholder="Mensagem" cols="30" rows="10"><?php echo getOld('subject'); ?></textarea><br>
-    <?php echo getFlash('message'); ?>
+        <div class="form_grupo">
+            <input type="text" name="subject" placeholder="Assunto" value="<?php echo getOld('subject'); ?>"><br>
+            <?php echo getFlash('subject'); ?>
+        </div>
 
-    <button type="submit" >Enviar</button>
-</form> 
+        <div class="form_grupo">
+            <textarea name="message" placeholder="Mensagem" cols="30" rows="10"><?php echo getOld('subject'); ?></textarea><br>
+            <?php echo getFlash('message'); ?>
+        </div>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+</div>
