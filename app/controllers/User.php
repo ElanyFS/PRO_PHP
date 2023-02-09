@@ -26,6 +26,16 @@ class User
         ];
     }
 
+    public function edit(){
+        // var_dump('Editar usuario');
+        // die();
+
+        return [
+            'view' => 'edit',
+            'data' => ['title' => 'Edit']
+        ];
+    }
+
     public function createIndex()
     {
         return [

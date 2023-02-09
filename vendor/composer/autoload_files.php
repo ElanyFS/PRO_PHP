@@ -21,6 +21,7 @@ return array(
     '63cfff43dd6d10c8552c6f2ea40b3fda' => $baseDir . '/app/helpers/old.php',
     '98f8fad90428a9c9349db5e6d01e3432' => $baseDir . '/app/helpers/csrf.php',
     'a7a78c7691d50c1f039d396f36b7492d' => $baseDir . '/app/helpers/email.php',
+    'e2695ce56b1ce44eff83e6ebb09af548' => $baseDir . '/app/helpers/image.php',
     'e477b60f38b9cff1dc7fcfe2a4357a1c' => $baseDir . '/app/core/controller.php',
     '172eabd95d947b73e87b919add7d2d22' => $baseDir . '/app/controllers/Home.php',
     'bbf1ae681a36fd4f4a3d6f6b6aa44401' => $baseDir . '/app/controllers/User.php',

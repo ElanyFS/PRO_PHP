@@ -11,4 +11,16 @@ class Users
 
     //     echo json_encode($users);
     // }
+
+    public function store(){
+        // var_dump($_FILES);
+        // die();
+        $file = $_FILES['file']['name'];
+
+        isFileToUpload('file');
+
+        checkExtension($file);
+
+        var_dump(getExtension($file));
+    }
 }

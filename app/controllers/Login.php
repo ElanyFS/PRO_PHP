@@ -69,7 +69,7 @@ class Login
         $_SESSION[LOGGED] = $user;
         $_SESSION[LOG] = $user->idusuario;
 
-        return redirect("/user/userlog");
+        return redirect("/");
     }
 
     public function destroy()
