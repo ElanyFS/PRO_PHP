@@ -14,7 +14,21 @@ function isFileToUpload($fileName)
 
 function checkExtension($name)
 {
+    getExtension($name);
     if (!in_array($name, ['jpg', 'png', 'pjeg'])) {
         throw new Exception("Tipo de arquivo inválido.");
     }
+}
+
+function upload(){
+    $dst = imagecreatetruecolor(640,480);
+
+    [$width, $height] = getimagesize($_FILES['file']['tmp_name']);
+
+
+    $src = imagecreatefrompng($_FILES['file']['tmp_name']);
+
+    imagecopyresampled($dst,$src, 0,0,0,0,640,480, $width, $height);
+
+    imagepng($dst, 'assets/img/teste.png');
 }

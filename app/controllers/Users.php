@@ -19,8 +19,10 @@ class Users
 
         isFileToUpload('file');
 
-        checkExtension($file);
+        checkExtension(getExtension($file));
 
-        var_dump(getExtension($file));
+        upload();
+
+        // var_dump(getExtension($file));
     }
 }
