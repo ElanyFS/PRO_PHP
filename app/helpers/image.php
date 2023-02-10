@@ -7,7 +7,7 @@ function getExtension($name)
 
 function isFileToUpload($fileName)
 {
-    if (!isset($_FILES[$fileName]) || !isset($_FILES[$fileName]['name']) || $_FILES[$fileName]['name'] === '') {
+    if (!isset($_FILES[$fileName],$_FILES[$fileName]['name']) || $_FILES[$fileName]['name'] === '') {
         throw new Exception("O campo {$fileName} não existe ou não foi enviado arquivo.");
     }
 }
@@ -22,7 +22,7 @@ function getFunctionCreateFrom($extension)
 
 function checkExtension($name)
 {
-    getExtension($name);
+    // getExtension($name);
     if (!in_array($name, ['jpg', 'png', 'pjeg'])) {
         throw new Exception("Tipo de arquivo inválido.");
     }
@@ -34,10 +34,8 @@ function resize($width, $height, $newWidth, $newHeight)
 
     if($newWidth/$newHeight > $ratio){
         $newWidth = $newHeight*$ratio;
-        $newHeight = $newHeight;
     }else{
         $newHeight = $newWidth/$ratio;
-        $newWidth = $newWidth;
     }
 
     return [$newWidth, $newHeight];
@@ -63,7 +61,11 @@ function crop($width, $height, $newWidth, $newHeight)
 function upload($newWidth, $newHeight, $folder, $type = 'resize')
 {
 
+    isFileToUpload('file');
+
     $extension = getExtension($_FILES['file']['name']);
+
+    checkExtension($extension);
 
     [$width, $height] = getimagesize($_FILES['file']['tmp_name']);
 

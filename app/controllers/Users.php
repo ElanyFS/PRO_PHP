@@ -13,15 +13,20 @@ class Users
     // }
 
     public function store(){
+
+        try{
+            upload(640,480,'assets/img', 'crop');
+        }catch(\Exception $e){
+            setMessageError('upError', $e->getMessage(), '/edit');
+        }
         // var_dump($_FILES);
         // die();
-        // $file = $_FILES['file']['name'];
 
-        // isFileToUpload('file');
+        // $file = $_FILES['file']['name'];
 
         // checkExtension(getExtension($file));
 
-        upload(640,480,'assets/img', 'crop');
+        
 
         // var_dump(getExtension($file));
     }
