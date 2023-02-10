@@ -21,7 +21,7 @@ class Users
 
         // checkExtension(getExtension($file));
 
-        upload(640,480,'assets/img');
+        upload(640,480,'assets/img', 'crop');
 
         // var_dump(getExtension($file));
     }

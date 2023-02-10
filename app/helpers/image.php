@@ -43,8 +43,21 @@ function resize($width, $height, $newWidth, $newHeight)
     return [$newWidth, $newHeight];
 }
 
-function crop()
+function crop($width, $height, $newWidth, $newHeight)
 {
+    $thumbWidth = $newWidth;
+    $thumbHeight = $newHeight;
+
+    $srcAspect = $width / $height;
+    $dstAspect = $thumbWidth / $thumbHeight;
+
+    if($srcAspect > $dstAspect){
+        $newWidth = $width / ($height / $thumbHeight);
+    }else{
+        $newHeight = $height / ($width / $thumbWidth);
+    }
+
+    return [$newWidth, $newHeight, $thumbWidth, $thumbHeight];
 }
 
 function upload($newWidth, $newHeight, $folder, $type = 'resize')
@@ -63,7 +76,20 @@ function upload($newWidth, $newHeight, $folder, $type = 'resize')
         $dst = imagecreatetruecolor($newWidth, $newHeight);
         imagecopyresampled($dst, $src, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
     }else{
-        crop();
+        [$newWidth, $newHeight, $thumbWidth ,$thumbHeight] = crop($width, $height, $newWidth, $newHeight);
+        $dst = imagecreatetruecolor($thumbWidth, $thumbHeight);
+        imagecopyresampled(
+            $dst, 
+            $src, 
+            0 - ($newWidth - $thumbWidth) / 2, 
+            0 - ($newHeight - $thumbHeight) / 2, 
+            0, 
+            0, 
+            $newWidth, 
+            $newHeight, 
+            $width, 
+            $height
+        );
     }
 
     
