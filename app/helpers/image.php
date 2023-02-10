@@ -12,6 +12,13 @@ function isFileToUpload($fileName)
     }
 }
 
+function getFunctionCreateFrom($extension){
+    return match($extension){
+        'png' => ['imagecreatefrompng', 'imagepng'],
+        'jpg', 'jpeg' => ['imagecreatefromjpeg', 'imagejpeg']
+    };
+}
+
 function checkExtension($name)
 {
     getExtension($name);
@@ -21,14 +28,18 @@ function checkExtension($name)
 }
 
 function upload(){
+
+    $extension = getExtension($_FILES['file']['name']);
+
     $dst = imagecreatetruecolor(640,480);
 
     [$width, $height] = getimagesize($_FILES['file']['tmp_name']);
 
+    [$functionCreateFrom, $saveImage] = getFunctionCreateFrom($extension);
 
-    $src = imagecreatefrompng($_FILES['file']['tmp_name']);
+    $src = $functionCreateFrom($_FILES['file']['tmp_name']);
 
     imagecopyresampled($dst,$src, 0,0,0,0,640,480, $width, $height);
 
-    imagepng($dst, 'assets/img/teste.png');
+    $saveImage($dst, 'assets/img/teste.png');
 }
