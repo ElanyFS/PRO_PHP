@@ -15,13 +15,13 @@ class Users
     public function store(){
         // var_dump($_FILES);
         // die();
-        $file = $_FILES['file']['name'];
+        // $file = $_FILES['file']['name'];
 
-        isFileToUpload('file');
+        // isFileToUpload('file');
 
-        checkExtension(getExtension($file));
+        // checkExtension(getExtension($file));
 
-        upload();
+        upload(640,480,'assets/img');
 
         // var_dump(getExtension($file));
     }

@@ -12,8 +12,9 @@ function isFileToUpload($fileName)
     }
 }
 
-function getFunctionCreateFrom($extension){
-    return match($extension){
+function getFunctionCreateFrom($extension)
+{
+    return match ($extension) {
         'png' => ['imagecreatefrompng', 'imagepng'],
         'jpg', 'jpeg' => ['imagecreatefromjpeg', 'imagejpeg']
     };
@@ -27,11 +28,29 @@ function checkExtension($name)
     }
 }
 
-function upload(){
+function resize($width, $height, $newWidth, $newHeight)
+{
+    $ratio = $width/$height;
+
+    if($newWidth/$newHeight > $ratio){
+        $newWidth = $newHeight*$ratio;
+        $newHeight = $newHeight;
+    }else{
+        $newHeight = $newWidth/$ratio;
+        $newWidth = $newWidth;
+    }
+
+    return [$newWidth, $newHeight];
+}
+
+function crop()
+{
+}
+
+function upload($newWidth, $newHeight, $folder, $type = 'resize')
+{
 
     $extension = getExtension($_FILES['file']['name']);
-
-    $dst = imagecreatetruecolor(640,480);
 
     [$width, $height] = getimagesize($_FILES['file']['tmp_name']);
 
@@ -39,7 +58,14 @@ function upload(){
 
     $src = $functionCreateFrom($_FILES['file']['tmp_name']);
 
-    imagecopyresampled($dst,$src, 0,0,0,0,640,480, $width, $height);
+    if($type === 'resize'){
+        [$newWidth, $newHeight] = resize($width, $height, $newWidth, $newHeight);
+        $dst = imagecreatetruecolor($newWidth, $newHeight);
+        imagecopyresampled($dst, $src, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+    }else{
+        crop();
+    }
 
-    $saveImage($dst, 'assets/img/teste.png');
+    
+    $saveImage($dst, $folder.DIRECTORY_SEPARATOR.rand().'.'.$extension);
 }
